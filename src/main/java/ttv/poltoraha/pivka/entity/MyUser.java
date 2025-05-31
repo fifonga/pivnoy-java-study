@@ -15,6 +15,9 @@ public class MyUser {
     private String username;
     private String password;
 
+    @Column(name = "must_update_password", nullable = false)
+    private boolean mustUpdatePassword = false;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_roles",

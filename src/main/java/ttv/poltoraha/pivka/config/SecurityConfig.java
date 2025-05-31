@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import ttv.poltoraha.pivka.security.CustomAuthenticationSuccessHandler;
 import ttv.poltoraha.pivka.serviceImpl.UserDetailsServiceImpl;
 
 /**
@@ -25,6 +26,7 @@ import ttv.poltoraha.pivka.serviceImpl.UserDetailsServiceImpl;
 @RequiredArgsConstructor
 public class SecurityConfig{
     private final UserDetailsServiceImpl userDetailsService;
+    private final CustomAuthenticationSuccessHandler successHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -38,7 +40,9 @@ public class SecurityConfig{
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().authenticated()
                 )
-                .formLogin(Customizer.withDefaults())
+                .formLogin(form -> form
+                        .successHandler(successHandler)
+                )
                 .httpBasic(Customizer.withDefaults())
                 // без этой штуки вам не даст авторизоваться в веб-окошке бд h2
                 .csrf()
