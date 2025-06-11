@@ -17,7 +17,7 @@
 
         <insert tableName="app_user">
             <column name="username" value="poltoraha_pivka"/>
-            <column name="password" value="{noop}1"/>
+            <column name="password" value="$2a$10$sLSM4NMcgEyKL0uLAdrpBet9g57SM7Bkkfy6h7lKNRII8e.qIsUa."/>
             <column name="enabled" valueBoolean="true"/>
             <column name="user_type" value="READER"/>
         </insert>
