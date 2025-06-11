@@ -1,0 +1,24 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--JUNIOR-разработчик. Чел, которому нужен другой чел и опора, чтобы он решал задачки.-->
+    <!--MIDDLE-разработчик. Чел, которому не нужен другой чел. Он может самостоятельно решить задачки.-->
+    <!--SENIOR-разработчик. Чел, которому не нужен другой чел. Чел, который может самостоятельно решить задачки. Чел, который решает задачки самым эффективным способом.-->
+    <changeSet id="add-data-reader" author="fifonga">
+        <insert tableName="app_user">
+            <column name="username" value="migrated_user"/>
+            <column name="password" value="$2a$10$bji9sYo6dXDvRHYWeM2ZeO/yFZ5oUST.PEXTy55rV1xQc5bdKX7Pq"/> <!-- String rawPassword = "mypass123";-->
+            <column name="enabled" valueBoolean="true"/>
+            <column name="user_type" value="READER"/>
+            <column name="must_update_password" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="user_roles">
+            <column name="username" value="migrated_user"/>
+            <column name="role_id" valueNumeric="1"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

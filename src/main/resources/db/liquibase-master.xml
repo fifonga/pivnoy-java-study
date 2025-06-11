@@ -10,10 +10,14 @@
 
     <include file="changelog/v1.0.4_add_categories_tables.xml" relativeToChangelogFile="true"/>
     <include file="changelog/v1.0.5_add_category_fk_to_books.xml" relativeToChangelogFile="true"/>
-    
+    <include file="changelog/v1.0.6_add_password_flag.xml" relativeToChangelogFile="true"/>
+
     <!--    инклудим данные для базы-->
     <include file="init-data/v1.0.0_init_data_author.xml" relativeToChangelogFile="true"/>
     <include file="init-data/v1.0.1_init_data_book.xml" relativeToChangelogFile="true"/>
+
+    <include file="init-data/v1.0.5_init_data_add_migrated_user.xml" relativeToChangelogFile="true"/>
+
 <!--    <include file="init-data/v1.0.2_init_data_user.xml" relativeToChangelogFile="true"/>-->
     <include file="init-data/v1.0.3_init_data_reader.xml" relativeToChangelogFile="true"/>
     <include file="init-data/v1.0.4_init_data_security_tables.xml" relativeToChangelogFile="true"/>
