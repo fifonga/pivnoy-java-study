@@ -46,6 +46,15 @@
             <column name="full_name" value="Мирон Фёдоров"/>
             <column name="avg_rating" value="3.0"/>
         </insert>
+<!--        Доп авторы для проверки BookRepository-->
+        <insert tableName="AUTHOR">
+            <column name="full_name" value="Тралл Жумайсимба"/>
+            <column name="avg_rating" value="5.0"/>
+        </insert>
+        <insert tableName="AUTHOR">
+            <column name="full_name" value="Хекс Жумайсимба"/>
+            <column name="avg_rating" value="3.0"/>
+        </insert>
     </changeSet>
 
 </databaseChangeLog>
