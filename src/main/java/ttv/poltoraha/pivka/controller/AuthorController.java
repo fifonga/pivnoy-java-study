@@ -3,8 +3,10 @@ package ttv.poltoraha.pivka.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.apache.commons.lang3.time.StopWatch;
+import org.apache.kafka.clients.consumer.StickyAssignor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +32,7 @@ public class AuthorController {
     private final CustomMetrics customMetrics;
 
     @PostMapping("/create")
-    public void createAuthor(@RequestBody AuthorDto authorDto) {
+    public ResponseEntity<String> createAuthor(@RequestBody AuthorDto authorDto) {
         customMetrics.recordMyCounter();
         val timer = new StopWatch();
 
@@ -41,10 +43,11 @@ public class AuthorController {
         logger.info("Запрос на /author/create успешно выполнен");
 
         customMetrics.recordMyTimer(timer.getTime());
+        return ResponseEntity.ok("Author created");
     }
 
     @PostMapping("/delete")
-    public void deleteAuthorById(@RequestParam Integer id) {
+    public ResponseEntity<String> deleteAuthorById(@RequestParam Integer id) {
         customMetrics.recordMyCounter();
         val timer = new StopWatch();
 
@@ -55,10 +58,11 @@ public class AuthorController {
         logger.info("Запрос на /author/delete успешно выполнен. Автор с ID={} удалён. ", id);
 
         customMetrics.recordMyTimer(timer.getTime());
+        return ResponseEntity.ok("Author deleted with id: " + id);
     }
 
     @PostMapping("/add/books")
-    public void addBooksToAuthor(@RequestParam Integer id, @RequestBody List<Book> books) {
+    public ResponseEntity<String> addBooksToAuthor(@RequestParam Integer id, @RequestBody List<Book> books) {
         customMetrics.recordMyCounter();
         val timer = new StopWatch();
 
@@ -69,5 +73,6 @@ public class AuthorController {
         logger.info("Запрос на author/add/books успешно выполнен. Добавлено {} книг автору ID={}", books.size(), id);
 
         customMetrics.recordMyTimer(timer.getTime());
+        return ResponseEntity.ok("Books added to author with id: " + id);
     }
 }

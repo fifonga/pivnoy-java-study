@@ -19,17 +19,17 @@ import java.util.List;
 public class RecommendationController {
     private final RecommendationService recommendationService;
 
-    @GetMapping("author")
+    @GetMapping("/author")
     public List<Author> recommendAuthor(@RequestParam String username) {
         return recommendationService.recommendAuthor(username);
     }
 
-    @GetMapping("book")
+    @GetMapping("/book")
     public List<Book> recommendBook(@RequestParam String username) {
         return recommendationService.recommendBook(username);
     }
 
-    @GetMapping("quote-by-book")
+    @GetMapping("/quote-by-book")
     public List<Quote> recommendQuoteByBook(@RequestParam Integer book_id) {
         return recommendationService.recommendQuoteByBook(book_id);
     }

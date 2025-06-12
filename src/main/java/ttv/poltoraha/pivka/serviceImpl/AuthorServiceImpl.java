@@ -40,8 +40,8 @@ public class AuthorServiceImpl implements AuthorService {
             logger.info("Отправляется запрос к БД: bookRepository.findById() по BookId из Dto: {}", authorDto.getBookId());
             bookRepository.findById(authorDto.getBookId())
                     .orElseThrow(() -> {
-                        logger.warn("Книга с id ={} не найдена при создании автора", authorDto.getBookId());
-                        return new EntityNotFoundException(String.format("Book with id = %d not found", authorDto.getBookId()));
+                        // логгер переехал в GlobalExceptionHandler
+                        return new EntityNotFoundException(String.format("Book with id = %d not found. Operation: Create_author", authorDto.getBookId()));
                     });
             logger.info("Получен ответ от БД: bookRepository.FindById() нашёл книгу по bookId из DTO: {}", authorDto.getBookId());
         }
