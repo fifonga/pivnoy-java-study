@@ -58,6 +58,12 @@ public class RecommendationServiceImplTest {
     }
 
     @Test
+    public void checkRecommendedBook() {
+        val books = recommendationService.recommendBook(USERNAME);
+        assertEquals(books.size(), 5);
+    }
+
+    @Test
     public void checkRecommendQuote() {
         val quotes = recommendationService.recommendQuoteByBook(1);
 

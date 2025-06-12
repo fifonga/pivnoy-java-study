@@ -12,7 +12,6 @@ import ttv.poltoraha.pivka.dao.request.AuthorDto;
 import ttv.poltoraha.pivka.entity.Author;
 import ttv.poltoraha.pivka.entity.Book;
 import ttv.poltoraha.pivka.repository.AuthorRepository;
-import ttv.poltoraha.pivka.repository.BookRepository;
 import ttv.poltoraha.pivka.serviceImpl.AuthorServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,7 +36,6 @@ public class AuthorServiceImplTest {
 
     @BeforeEach
     public void setUp() {
-
         authorDto = getAuthorDto();
         authorEntity = getAuthor();
     }
