@@ -1,9 +1,11 @@
 package ttv.poltoraha.pivka.repository;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import ttv.poltoraha.pivka.entity.Author;
 import ttv.poltoraha.pivka.entity.Book;
 
 import java.util.List;
@@ -27,6 +29,12 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
             nativeQuery = true
     )
     public List<Book> findBooksByTopAuthorLastName(@Param("lastName") String lastName);
+
+    @Query("SELECT b FROM book b WHERE b.tags LIKE %:tag% ORDER BY b.rating DESC")
+    List<Book> findTopBooksByTag(@Param("tag") String tag, Pageable pageable);
+
+    @Query("SELECT b FROM book b WHERE b.tags LIKE %:tag% ORDER BY b.rating DESC")
+    List<Book> findTopBooksByTag(@Param("tag") String tag);
 
 
 

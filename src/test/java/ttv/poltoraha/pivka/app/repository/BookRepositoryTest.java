@@ -5,11 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ttv.poltoraha.pivka.entity.Book;
 import ttv.poltoraha.pivka.repository.BookRepository;
-
-import java.util.Arrays;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
